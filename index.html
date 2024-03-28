@@ -98,20 +98,14 @@
         const previewFrame = document.getElementById('preview');
         const editorTextarea = document.getElementById('html-editor');
 
-        // Load editor content from localStorage
-        const savedContent = localStorage.getItem('editorContent');
-        if (savedContent) {
-            htmlEditor.setValue(savedContent);
-            editorTextarea.value = savedContent;
-            updatePreview(savedContent);
-        }
+        const initialContent = "<h1>Hello, World!</h1>";
+        htmlEditor.setValue(initialContent);
+        updatePreview(initialContent);
 
         // Update preview when HTML editor content changes
         htmlEditor.on('change', () => {
             const html = htmlEditor.getValue();
             updatePreview(html);
-            // Save editor content to localStorage
-            localStorage.setItem('editorContent', html);
         });
 
         function updatePreview(html) {
